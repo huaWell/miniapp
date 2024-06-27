@@ -490,8 +490,8 @@ import Search from '@/components/Search.vue'
 const NEAR = 0;
 const FREE = 1
 // import cGetAddress from '@/modules/cGetAddress'
-import chooseLocation from '@/modules/chooseLocation'
-import {getLocation,setLocation} from '@/modules/getLocation'
+// import chooseLocation from '@/modules/chooseLocation'
+// import {getLocation,setLocation} from '@/modules/getLocation'
 import checkAuthSetting from '@/modules/checkAuthSetting'
 export default {
   name: 'Home',
@@ -736,24 +736,17 @@ export default {
     async refresh(){
         this.nearGoodsSearchAfter = [];
         this.nearGoods = [];
-        this.getNearGoods(this.nearDistances[this.currentDistanceIndex], this.nearGoodsSearchAfter);
-        this.getMissionGoods();
+        // this.getNearGoods(this.nearDistances[this.currentDistanceIndex], this.nearGoodsSearchAfter);
+        // this.getMissionGoods();
     },
-    async getMissionGoods(){
-        let {latitude, longitude} = await getLocation();
-
-        
+    async getMissionGoods(){ 
         let param = {
           distance: this.nearDistances[this.nearDistances.length-1],
           keyword:'',
-          lat: latitude,
-          lng: longitude,
           searchAfter:[],
           size:20
         }
         let res = await this.R.fetchMissionSearch(param);
-        
-        
         this.helpGoods = res.data.data.dataList;
     },
     async onChange(e) {
@@ -810,50 +803,8 @@ export default {
       this.getFreeGoods(this.nearDistances[index]);
     },
     toProductionHelpDetail(good){
-      
       this.$push('/pages/production-help-detail/main?id=' + good.id)
     },
-    async onChooseLocation () {
-      let locationSetting = await checkAuthSetting('scope.userLocation')
-      if (locationSetting == 'rejected') {
-        
-        await this.$confirm({
-          title: '提示',
-          content: '尚未开启定位, 是否开启'
-        }).then(res => {
-          this.gotoSetting = true;
-          wx.openSetting()
-        }).catch(err => {
-          this.$toast.fail('你又一次拒绝了我们')
-        })
-      } else {
-        let goc = await getLocation();
-        let res = await chooseLocation({
-          ...goc,
-          name: this.address
-        });
-
-        this.address = res.name ? res.name : this.address;
-        let {latitude, longitude} = res
-
-
-        wx.setStorageSync('userLocation', JSON.stringify({
-          latitude,
-          longitude
-        }))
-
-
-
-
-
-
-        let lat = res.latitude ? res.latitude : latitude;
-        let lng = res.longitude ? res.longitude : longitude;
-        setLocation(lat, lng);
-        this.R.fetchLocationName.address = this.address;
-        this.refresh();
-      }
-    }
   }
 }
 </script>

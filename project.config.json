@@ -43,7 +43,7 @@
   },
   "miniprogramRoot": "dist/",
   "compileType": "miniprogram",
-  "appid": "touristappid",
+  "appid": "wx32118b72fef3f797",
   "projectname": "circle-circle",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
