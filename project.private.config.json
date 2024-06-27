@@ -1,0 +1,128 @@
+{
+  "setting": {
+    "compileHotReLoad": true
+  },
+  "projectname": "cqxzfrontend-master",
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "libVersion": "2.21.4",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/wx/main",
+          "pathName": "pages/wx/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/chat/main",
+          "pathName": "pages/chat/main",
+          "query": "contactId=16",
+          "scene": null
+        },
+        {
+          "name": "pages/production-list/main",
+          "pathName": "pages/production-list/main",
+          "query": "rootCategory=%E6%89%8B%E6%9C%BA&category=%E8%8B%B9%E6%9E%9C",
+          "scene": null
+        },
+        {
+          "name": "pages/product-detail/main",
+          "pathName": "pages/product-detail/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/ask/main",
+          "pathName": "pages/ask/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/hurryup-detail/main",
+          "pathName": "pages/hurryup-detail/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/login/main",
+          "pathName": "pages/login/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/publish/main",
+          "pathName": "pages/publish/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/chat/main",
+          "pathName": "pages/chat/main",
+          "query": "contactId=2",
+          "scene": null
+        },
+        {
+          "name": "pages/message/main",
+          "pathName": "pages/message/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/product-detail/main",
+          "pathName": "pages/product-detail/main",
+          "query": "data=%7B%22id%22%3A151%2C%22name%22%3A%22%E5%97%AF%E5%97%AF%22%2C%22headImg%22%3A%22https%3A%2F%2Frecycle-xz.oss-cn-shanghai.aliyuncs.com%2F1654530117818420427_dG1wX2I0NzE5MGYxYjFjYTBlYTExYmU0NWVmN2U3M2I5MzAz.jpg%22%2C%22price%22%3A%22666.00%22%2C%22oriPrice%22%3A%2266666.00%22%2C%22distance%22%3A%220.066km%22%2C%22publisherName%22%3A%22%E5%90%91%E5%AF%BC%22%2C%22publisherImage%22%3A%22https%3A%2F%2Frecycle-xz.oss-cn-shanghai.aliyuncs.com%2F1654013601596719348_dG1wX2EwODU5MGMxN2M1NDU5NGQzODkxMjhhNTVkODBmMjM4.jpg%22%2C%22publisherId%22%3A12%2C%22status%22%3A1%7D",
+          "scene": null
+        },
+        {
+          "name": "pages/product-detail/main",
+          "pathName": "pages/product-detail/main",
+          "query": "data=%257B%2522id%2522%253A188%252C%2522name%2522%253A%25221234%2522%252C%2522headImg%2522%253A%2522https%253A%252F%252Frecycle-xz.oss-cn-shanghai.aliyuncs.com%252F1655212531010352728_eWk5SWNmUTRyUnlVNGE0MjJhM2RlYzIxZjY2ZWJhMGNhYjdlNzcyNmU1Y2E%253D.webp%2522%252C%2522price%2522%253A%252223.00%2522%252C%2522oriPrice%2522%253A%25220.00%2522%252C%2522distance%2522%253A%25220.0km%2522%252C%2522publisherName%2522%253A%2522%25E5%25B0%258F%25E6%259C%258B%25E5%258F%258B%25E5%25BE%2588%25E4%25B9%2596%2522%252C%2522publisherImage%2522%253A%2522https%253A%252F%252Fthirdwx.qlogo.cn%252Fmmopen%252Fvi_32%252FDYAIOgq83eqHdfX5hPIl7kXcsICT1GZnwF9o4t8BQJiapdAZNbw5GC9MUIbYpVDQD3rbsTL5TT85MQjyVGcraWA%252F132%2522%252C%2522publisherId%2522%253A16%252C%2522status%2522%253A1%257D",
+          "scene": null
+        },
+        {
+          "name": "pages/publish/main",
+          "pathName": "pages/publish/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/message/main",
+          "pathName": "pages/message/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/choose-location/main",
+          "pathName": "pages/choose-location/main",
+          "query": "latitude=31.836963653564453&longitude=117.1386947631836&name=%25E8%25BF%2599%25E6%2598%25AF%25E4%25B8%2580%25E4%25B8%25AA%25E6%25B5%258B%25E8%25AF%2595name",
+          "scene": null
+        },
+        {
+          "name": "pages/publish/main",
+          "pathName": "pages/publish/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/home/main",
+          "pathName": "pages/home/main",
+          "query": "scene=circleId1",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/h5-webview-good-share/main",
+          "query": "groupId=9&sessionKey=4eca9a82aea1496cacd164c52a8c1fb7&latitude=31.37482&longitude=121.26621&avatar=%252F%252Frecycle-xz.oss-cn-shanghai.aliyuncs.com%252F1655390242982232194_ZGVmYXVsdGhlYWQ%253D.png&name=%25E5%25BE%25AE%25E4%25BF%25A1%25E7%2594%25A8%25E6%2588%25B73740&price=45.00&title=%25E5%2587%25BA%25E4%25B8%2580%25E6%259D%25A1%25E5%2585%25A8%25E6%2596%25B0%25E5%258D%258A%25E8%25BA%25AB%25E8%25A3%2599&desc=%25E5%2587%25BA%25E4%25B8%2580%25E6%259D%25A1%25E5%2585%25A8%25E6%2596%25B0%25E8%258F%25B1%25E6%25A0%25BC%25E7%25BA%25B9%25E5%258D%258A%25E8%25BA%25AB%25E8%25A3%2599%2520%25E8%25B4%25A8%25E6%2584%259F%25E5%25BE%2588%25E5%25A5%25BD%250A%25E6%2598%25AF%25E9%2582%25A3%25E7%25A7%258D%25E4%25B8%2580%25E7%259C%258B%25E5%25B0%25B1%25E8%2587%25B3%25E5%25B0%2591%25E5%25BE%2597100%25E5%2587%25BA%25E5%25A4%25B4%25E6%2589%258D%25E8%2583%25BD%25E4%25B9%25B0%25E5%2588%25B0%25E7%259A%2584%25E8%25A3%2599%25E5%25AD%2590%250A%25E5%25AE%259E%25E7%2589%25A9%25E5%25BE%2588%25E6%25BC%2582%25E4%25BA%25AE%2520%25E6%2590%25AD%25E4%25BB%2580%25E4%25B9%2588%25E8%25A1%25A3%25E6%259C%258D%25E9%2583%25BD%25E5%25A5%25BD%25E7%259C%258B%2520%25E6%25A0%25BC%25E5%25AD%2590%25E5%25BE%2588%25E5%25A5%25BD%25E7%259C%258B%250A%25E5%258E%25BB%25E5%25B9%25B4%25E4%25B9%25B0%25E7%259A%2584%25E8%25A1%25A3%25E6%259C%258D%25E5%25A4%25AA%25E5%25A4%259A%25E6%25B2%25A1%25E6%259C%2589%25E7%25A9%25BF%25E5%2588%25B0%25E5%2586%25AC%25E5%25A4%25A9%25E5%25B0%25B1%25E8%25BF%2587%25E5%258E%25BB%25E4%25BA%2586%250A%25E5%258E%25BB%25E5%25B9%25B4%25E8%25BA%25AB%25E9%25AB%2598%2520156%252095%2520%25E4%25BB%258A%25E5%25B9%25B4%25E5%2587%25BA%25E6%2581%25AF%25E4%25BA%2586%25E6%258E%2589%25E4%25BA%2586%25E5%25B0%2586%25E8%25BF%259112%25E6%2596%25A4%25E7%259A%2584%25E8%2582%2589%250A83%25E6%2596%25A4%25E5%25A4%259A%25E4%25B8%2580%25E7%2582%25B9%25EF%25BC%258C%25E8%25BF%2599%25E8%25A1%25A3%25E6%259C%258D%25E5%25B0%25B1%25E5%25A4%25A7%25E4%25BA%2586%25E6%25B2%25A1%25E6%259C%2589%25E5%258A%259E%25E6%25B3%2595%25E7%25A9%25BF%25E4%25BA%2586%250A%25E5%2585%25A8%25E6%2596%25B0%25E4%25B8%2580%25E6%25AC%25A1%25E9%2583%25BD%25E6%25B2%25A1%25E6%259C%2589%25E7%25A9%25BF%25E8%25BF%2587%252085%25E8%25B4%25AD%25E5%2585%25A5%252045%25E5%2587%25BA%250A%25E5%2587%25BA%25E7%25BB%2599%25E6%259C%2589%25E9%259C%2580%25E8%25A6%2581%25E7%259A%2584%25E5%25A7%2590%25E5%25A6%25B9%25E4%25BA%2586&image=https%253A%252F%252Frecycle-xz.oss-cn-shanghai.aliyuncs.com%252F1664245694442473155_dG1wXzkzYzg1MjNhYTRkYmQ1YmM1YmM2MDVkMGJkMWVlZjhh.jpg&qrCode=https%253A%252F%252Frecycle-xz.oss-cn-shanghai.aliyuncs.com%252F1664245694442473155_dG1wXzkzYzg1MjNhYTRkYmQ1YmM1YmM2MDVkMGJkMWVlZjhh.jpg",
+          "scene": null
+        },
+        {
+          "name": "pages/chat/main",
+          "pathName": "pages/chat/main",
+          "query": "contactId=4",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

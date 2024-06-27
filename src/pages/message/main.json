@@ -1,0 +1,12 @@
+{
+	"navigationBarTitleText": "消息中心",
+	"usingComponents": {
+	  "van-cell": "/static/vant-weapp/cell/index",
+	  "van-cell-group": "/static/vant-weapp/cell-group/index",
+	  "van-tab": "/static/vant-weapp/tab/index",
+	  "van-tabs": "/static/vant-weapp/tabs/index",
+	  "van-empty": "/static/vant-weapp/empty/index",
+	  "van-button": "/static/vant-weapp/button/index"
+	},
+	"enablePullDownRefresh": true
+}

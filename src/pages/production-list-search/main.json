@@ -1,0 +1,16 @@
+{
+	"navigationBarTitleText": "商品列表",
+	"enablePullDownRefresh": true,
+	"usingComponents": {
+	  "van-cell": "/static/vant-weapp/cell/index",
+	  "van-cell-group": "/static/vant-weapp/cell-group/index",
+	  "van-tab": "/static/vant-weapp/tab/index",
+	  "van-tabs": "/static/vant-weapp/tabs/index",
+	  "van-empty": "/static/vant-weapp/empty/index",
+	  "van-button": "/static/vant-weapp/button/index",
+	  "van-search":"/static/vant-weapp/search/index",
+	  "van-dropdown-menu": "/static/vant-weapp/dropdown-menu/index",
+	  "van-dropdown-item": "/static/vant-weapp/dropdown-item/index",
+	  "van-divider": "/static/vant-weapp/divider/index"
+	}
+}

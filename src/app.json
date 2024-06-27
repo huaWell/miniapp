@@ -1,0 +1,93 @@
+{
+  "pages": [
+    "pages/home/main",
+    "pages/mall/main",
+    "pages/guide/main",
+    "pages/community/main",
+    "pages/wode/main",
+    "pages/user-info/main",
+    "pages/message/main",
+    "pages/chat/main",
+    "pages/my-publish/main",
+    "pages/my-collection/main",
+    "pages/production-list/main",
+    "pages/wx/main",
+    "pages/search/main",
+    "pages/publish/main",
+    "pages/production-help/main",
+    "pages/my-ask-buy/main",
+    "pages/publish-help/main",
+    "pages/product-detail/main",
+    "pages/ask/main",
+    "pages/hurryup-detail/main",
+    "pages/login/main",
+    "pages/my-center/main",
+    "pages/map/main",
+    "pages/webview/main",
+    "pages/production-help-detail/main",
+    "pages/production-help-search/main",
+    "pages/production-list-search/main",
+    "pages/circle-h5/main",
+    "pages/my-fresh/main",
+    "pages/h5-webview/main",
+    "pages/h5-webview-circle/main",
+    "pages/h5-webview-good-share/main",
+    "pages/object/main"
+  ],
+  "window":
+  {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar":
+  {
+    "color": "#7d7e80",
+    "selectedColor": "#1989fa",
+    "backgroundColor": "",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/main",
+        "text": "首页",
+        "iconPath": "/static/home.png",
+        "selectedIconPath": "/static/home-active.png"
+      },
+      {
+        "pagePath": "pages/circle-h5/main",
+        "text": "圈子",
+        "iconPath": "/static/circle.png",
+        "selectedIconPath": "/static/circle-active.png"
+      },
+      {
+        "pagePath": "pages/guide/main",
+        "text": "发布",
+        "iconPath": "/static/publish.png",
+        "selectedIconPath": "/static/publish.png"
+      },
+      {
+        "pagePath": "pages/message/main",
+        "text": "消息",
+        "iconPath": "/static/message.png",
+        "selectedIconPath": "/static/message-active.png"
+      },
+      {
+        "pagePath": "pages/wode/main",
+        "text": "我的",
+        "iconPath": "/static/wode.png",
+        "selectedIconPath": "/static/wode-active.png"
+      }
+    ]
+  },
+  "usingComponents":{},
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取位置的提示语"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ]
+}

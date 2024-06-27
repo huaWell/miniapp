@@ -1,0 +1,8 @@
+{
+	"navigationBarTitleText": "wx相关测试",
+	"usingComponents": {
+	  "van-cell": "/static/vant-weapp/cell/index",
+	  "van-button": "/static/vant-weapp/button/index",
+	  "van-cell-group": "/static/vant-weapp/cell-group/index"
+	}
+}

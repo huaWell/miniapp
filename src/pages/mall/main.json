@@ -1,0 +1,8 @@
+{
+	"navigationBarTitleText": "全部分类",
+	"enablePullDownRefresh": true,
+	"usingComponents":{
+		"van-button": "/static/vant-weapp/button/index",
+		"van-search":"/static/vant-weapp/search/index"
+	}
+}

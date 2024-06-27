@@ -1,0 +1,13 @@
+{
+	"navigationBarTitleText": "发布宝贝",
+	"usingComponents": {
+	  "van-cell": "/static/vant-weapp/cell/index",
+	  "van-cell-group": "/static/vant-weapp/cell-group/index",
+	  "van-field": "/static/vant-weapp/field/index",
+	  "van-button": "/static/vant-weapp/button/index",
+	  "van-action-sheet": "/static/vant-weapp/action-sheet/index",
+	  "van-popup":"/static/vant-weapp/popup/index",
+	  "van-datetime-picker": "/static/vant-weapp/datetime-picker/index",
+	  "van-checkbox": "/static/vant-weapp/checkbox/index"
+	}
+}

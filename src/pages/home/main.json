@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
+	"usingComponents": {
+	  "van-tab": "/static/vant-weapp/tab/index",
+	  "van-tabs": "/static/vant-weapp/tabs/index",
+	  "van-divider": "/static/vant-weapp/divider/index"
+	}
+}
