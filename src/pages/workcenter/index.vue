@@ -37,6 +37,7 @@
         .body{
             width: 100%;
             height: auto;
+            margin-top: 12px;
         }
         .guis{
             display: flex;
@@ -54,8 +55,8 @@
         }
         
         .img-box{
-            width: 40px;
-            height: 40px;
+            width: 50%;
+            height: 60%;
           
         }
 .img-box-img{
@@ -71,11 +72,6 @@
 </style>
 <template>
   <div class="container" @click="hideTip">
-    <div style="width: 100vw;height: 250px;background-color: #fff;">
-      <mpvue-echarts lazyLoad :echarts="echarts" :onInit="onInit" ref="echarts" />
-    </div>
-    
-
         <div class="card" v-for="(category,index) in menus" :key="index">
             <div class="title">
                 <div class="mark">
@@ -97,75 +93,47 @@
 </template>
 <script>
 import qs from 'querystring'
-import * as echarts from 'echarts'
-import mpvueEcharts from 'mpvue-echarts'
-
-let chart = null;
 
 export default {
-  name: 'Wode',
+  name: 'workcenter',
   components: {
-    mpvueEcharts
   },
   data() {
     return {
-      echarts,
-      menus:[],
-      chartOption: {
-        title: {
-          text: '柱状图示例'
-        },
-        tooltip: {},
-        xAxis: {
-          data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-        },
-        yAxis: {},
-        series: [
-          {
-            name: '销量',
-            type: 'bar',
-            data: [120, 200, 150, 80, 70, 110, 130]
-          }
-        ]
-      },
+      menus:[]
     }
   },
   mounted() {
   },
   async onShow () {
-    console.log('000')
-    this.initChart()
-    this.menus = [{
+    this.menus = [
+    {
+      name: '快捷入口',
+      guis: [{
+        name:'报价计算器',
+        url:'/static/gui.jpeg'
+      },
+      {
+        name:'BI报表',
+        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
+      },
+      {
+        name:'订单',
+        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
+      }]
+    },
+    {
       name: '需求管理',
       guis: [{
         name:'需求计划方案',
         url:'/static/gui.jpeg'
       },
       {
-        name:'需求计划方案',
+        name:'需求跟踪',
         url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
       },
       {
-        name:'需求计划方案',
-        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
-      },
-      {
-        name:'需求计划方案',
-        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
-      },
-      {
-        name:'需求计划方案',
-        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
-      }]
-    },
-    {
-      name: '需求管理',
-      guis: [{
-        name:'需求计划方案',
-        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
-      },
-      {
-        name:'需求计划方案',
+        name:'订单跟踪',
         url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
       },
       {
@@ -174,36 +142,38 @@ export default {
       }]
     },
     {
-      name: '需求管理',
+      name: '库存管理',
       guis: [{
-        name:'需求计划方案',
-        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
-      },
-      {
-        name:'需求计划方案',
-        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
-      },
-      {
-        name:'需求计划方案',
+        name:'库存计划',
         url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
       }]
+    },
+    {
+      name: '采购管理',
+      guis: [{
+        name:'物料需求',
+        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
+      },
+      {
+        name:'供应序列',
+        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
+      },
+      ]
+    },
+    {
+      name: '高级计划和排产',
+      guis: [{
+        name:'生产计划方案',
+        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
+      },
+      {
+        name:'排产方案',
+        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
+      },
+      ]
     }]
   },
   methods: {
-    onInit(canvas, width, height){
-      console.log('111')
-      chart = echarts.init(canvas, null, {
-        width: width,
-        height: height
-      })
-      canvas.setChart(chart)
-      chart.setOption(this.chartOption)
-      return chart
-    },
-    initChart(){
-      console.log('222')
-      this.$refs.echarts.init()
-    }
   }
 }
 
