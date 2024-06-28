@@ -50,13 +50,13 @@
 </style>
 <template>
   <div class="container">
-    <div class="card" style="height: 400px;">
+    <div class="card" style="height: 400px;" @click="jump">
       <div class="title">履约趋势</div>
       <div class="content">
         <mp-charts :options="options" :canvasId="'chart1'" />
       </div>
     </div>
-    <div class="card" style="height: 100px;">
+    <div class="card" style="height: 100px;"  @click="jump1">
       <div class="content">
         <div class="text">
           <div class="description">成品库存总量</div>
@@ -67,7 +67,7 @@
         </div>
       </div>
     </div>
-    <div class="card" style="height: 100px;">
+    <div class="card" style="height: 100px;"  @click="jump2">
       <div class="content">
         <div class="text">
           <div class="description">大客户履约率</div>
@@ -78,7 +78,7 @@
         </div>
       </div>
     </div>
-    <div class="card" style="height: 100px;">
+    <div class="card" style="height: 100px;" @click="jump3">
       <div class="content">
         <div class="text">
           <div class="description">产能利用率</div>
@@ -93,23 +93,39 @@
 </template>
 <script>
 import Search from '@/components/Search.vue'
-import mpCharts from '@/components/MpCharts.vue';
-import Card from '@/components/Card.vue';
+import mpCharts from '@/components/MpCharts.vue'
 import * as echarts from "echarts";
 
 
-// const jump = () => {
-//   wx.reLaunch({
-//     url: `/pages/delay-order-details/main`
-//   })
-// };
+const jump = () => {
+  wx.reLaunch({
+    url: `/pages/delay-order-details/main`
+  })
+};
+
+const jump1 = () => {
+  wx.reLaunch({
+    url: `/pages/inventory-details/main`
+  })
+};
+
+const jump2 = () => {
+  wx.reLaunch({
+    url: `/pages/performance-details/main`
+  })
+};
+
+const jump3 = () => {
+  wx.reLaunch({
+    url: `/pages/use-ratio/main`
+  })
+};
 
 export default {
   name: 'Home',
   components: {
     Search,
-    mpCharts,
-    Card
+    mpCharts
   },
   data() {
     return {
@@ -383,7 +399,10 @@ export default {
   },
 
   methods: {
-    // jump
+    jump,
+    jump1,
+    jump2,
+    jump3
   }
 }
 </script>
