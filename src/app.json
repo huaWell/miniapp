@@ -5,6 +5,7 @@
     "pages/guide/main",
     "pages/community/main",
     "pages/wode/main",
+    "pages/workcenter/main",
     "pages/user-info/main",
     "pages/message/main",
     "pages/chat/main",
@@ -55,8 +56,8 @@
         "selectedIconPath": "/static/home-active.png"
       },
       {
-        "pagePath": "pages/circle-h5/main",
-        "text": "圈子",
+        "pagePath": "pages/workcenter/main",
+        "text": "工作台",
         "iconPath": "/static/circle.png",
         "selectedIconPath": "/static/circle-active.png"
       },
@@ -81,6 +82,7 @@
     ]
   },
   "usingComponents":{},
+  "lazyCodeLoading": "requiredComponents",
   "permission": {
     "scope.userLocation": {
       "desc": "获取位置的提示语"

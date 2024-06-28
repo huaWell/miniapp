@@ -9,6 +9,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/home/main",
+          "pathName": "pages/workcenter/main",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/wx/main",
           "pathName": "pages/wx/main",
           "query": "",
@@ -102,12 +109,6 @@
           "name": "pages/publish/main",
           "pathName": "pages/publish/main",
           "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/home/main",
-          "pathName": "pages/home/main",
-          "query": "scene=circleId1",
           "scene": null
         },
         {

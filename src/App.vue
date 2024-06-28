@@ -30,9 +30,9 @@ export default {
     }
   },
   computed: {
-    userIsLogin() {
-      return this.$store.state.userIsLogin
-    }
+    // userIsLogin() {
+    //   return this.$store.state.userIsLogin
+    // }
   },
   onShow() {
   },
