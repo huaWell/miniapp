@@ -52,11 +52,11 @@
             justify-content: center;
             flex-direction: column;
         }
-        
+
         .img-box{
             width: 40px;
             height: 40px;
-          
+
         }
 .img-box-img{
     width: 100%;
@@ -74,7 +74,7 @@
     <div style="width: 100vw;height: 250px;background-color: #fff;">
       <mpvue-echarts lazyLoad :echarts="echarts" :onInit="onInit" ref="echarts" />
     </div>
-    
+
 
         <div class="card" v-for="(category,index) in menus" :key="index">
             <div class="title">
