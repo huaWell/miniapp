@@ -1,76 +1,62 @@
-<!--
- * @Author: MASON-SEA yangyangmason@outlook.com
- * @Date: 2024-06-28 10:56:26
- * @LastEditors: MASON-SEA yangyangmason@outlook.com
- * @LastEditTime: 2024-06-28 11:38:14
- * @FilePath: \miniapp\src\components\MpCharts.vue
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-<style lang="less" scoped></style>
+<!-- src/components/EChartsComponent.vue -->
 <template>
-  <div style="width: 100vw;height: 250px;background-color: red;">
-    123
-    <mpvue-echarts lazyLoad :echarts="echarts" :onInit="onInit" ref="echarts" />
+  <div style="width: 100%;height: 100%;background-color: #fff;">
+    <ec-canvas :id="canvasId" :canvas-id="canvasId" ref="canvas" :ec="ec" @init="onChartInit" :echarts="echarts" />
   </div>
 </template>
+
 <script>
-import * as echarts from 'echarts'
-import mpvueEcharts from 'mpvue-echarts'
+import * as echarts from 'echarts';
+import mpvueEcharts from 'mpvue-echarts';
+let chart = null;
 export default {
-  name: 'mpCharts',
   components: {
-    mpvueEcharts
+    'ec-canvas': mpvueEcharts
   },
   props: {
     options: {
       type: Object,
       required: true
-    }
-  },
-  watch: {
-    options: {
-      deep: true,
-      handler() {
-        this.updateChart()
-      }
+    },
+    canvasId: {
+      type: String,
+      required: true
     }
   },
   data() {
     return {
-      chart: null,
-      echarts
-    }
+      echarts,
+      ec: {
+        lazyLoad: true // 懒加载，init 方法会在组件 mounted 后执行
+      }
+    };
   },
-  mounted() {
-    console.log('000')
-    console.log(this.options)
-
-    this.initChart()
-  },
-  // mounted() {
-  //   console.log('xxxxx')
-  // },
-
   methods: {
-    onInit(canvas, width, height) {
-      console.log('111')
-      this.chart = echarts.init(canvas, null, {
-        width: width,
-        height: height
+    onChartInit({ canvas, canvasWidth, canvasHeight }) {
+      chart = echarts.init(canvas, null, {
+        width: canvasWidth,
+        height: canvasHeight
       })
-      canvas.setChart(this.chart)
-      this.chart.setOption(this.options)
-      return this.chart
-    },
-    initChart() {
-      console.log('222')
-      // this.$refs.echarts.init()
+      canvas.setChart(chart);
+      this.updateChart();
     },
     updateChart() {
-      if (this.chart) {
-        this.chart.setOption(this.options);
+      if (chart) {
+        chart.setOption(this.options);
       }
     }
+  },
+  watch: {
+    option: {
+      handler() {
+        this.updateChart();
+      },
+      deep: true // 深度监听对象变化
+    }
   }
-}
+};
 </script>
+
+<style scoped>
+/* 可选的样式 */
+</style>
