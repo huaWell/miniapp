@@ -55,15 +55,9 @@
         }
 
         .img-box{
-<<<<<<< HEAD
-            width: 40px;
-            height: 40px;
-
-=======
             width: 50%;
             height: 60%;
-          
->>>>>>> 12ff37f35497b1d685583cc89a089b7347fb9d95
+
         }
 .img-box-img{
     width: 100%;
@@ -78,14 +72,6 @@
 </style>
 <template>
   <div class="container" @click="hideTip">
-<<<<<<< HEAD
-    <div style="width: 100vw;height: 250px;background-color: #fff;">
-      <mpvue-echarts lazyLoad :echarts="echarts" :onInit="onInit" ref="echarts" />
-    </div>
-
-
-=======
->>>>>>> 12ff37f35497b1d685583cc89a089b7347fb9d95
         <div class="card" v-for="(category,index) in menus" :key="index">
             <div class="title">
                 <div class="mark">
