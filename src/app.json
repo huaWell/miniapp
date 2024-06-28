@@ -62,8 +62,8 @@
         "selectedIconPath": "/static/circle-active.png"
       },
       {
-        "pagePath": "pages/guide/main",
-        "text": "发布",
+        "pagePath": "pages/publish/main",
+        "text": "试算",
         "iconPath": "/static/publish.png",
         "selectedIconPath": "/static/publish.png"
       },

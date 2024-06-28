@@ -80,7 +80,7 @@
             </div>
             <div class="body">
                 <div class="guis">
-                  <div class="gui" v-for="(gui, idx) in category.guis" :key="idx">
+                  <div class="gui" v-for="(gui, idx) in category.guis" :key="idx" @click="toPage(gui)">
                     <div class="img-box">
                             <img class="img-box-img" src="https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390"></img>
                         </div>
@@ -119,7 +119,8 @@ export default {
       },
       {
         name:'订单',
-        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
+        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390',
+        path:'/pages/production-list/main'
       }]
     },
     {
@@ -174,6 +175,10 @@ export default {
     }]
   },
   methods: {
+    toPage(gui) {
+      console.log(gui)
+      this.$push(gui.path);
+    }
   }
 }
 
