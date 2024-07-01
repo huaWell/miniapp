@@ -163,9 +163,9 @@
                                 <div>
                                     <van-circle
                                         value="25"
-                                        layer-color="#eeeeee"
-                                        color="#ee0a24"
-                                        text="颜色定制"
+                                        layer-color="#D7E3FD"
+                                        color="#3775F6"
+                                        text="60%"
                                         />
 
 
