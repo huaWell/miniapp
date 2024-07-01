@@ -66,7 +66,16 @@
                     display: flex;
                     flex-direction: row;
                     margin-top: 8px;
-                  
+                    justify-content: space-between;
+                    .date-left{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                    }
+                    .date-right{
+
+                    }
+
                     .date-block{
                         padding: 6px 8px;
                         background: #F1F3F7;
@@ -128,11 +137,11 @@
                  
                         <div class="title">
                             <div class="title-left">
-                                <div class="icon icon--delete"></div>
+                                <div class="icon icon--company"></div>
                                 <div class="custom-name">{{order.custom_name}}</div>
                             </div>
                             <div class="title-right">
-                                按钮
+                                
                             </div>
                         </div>
                         <div class="content">
@@ -146,29 +155,31 @@
                                 <span class="info-text">{{order.price}}</span>
                             </div>
                             <div class="date">
-                                <div class="date-block date1">
+                                <div class="date-left">
+                                    <div class="date-block date1">
                                     <div class="date-label">
                                         <div class="icon icon--date"></div>
                                         <div class="text">约定交期</div>
                                     </div>
                                     <div class="date-text">{{order.origin_date}}</div>
-                                </div>
-                                <div class="date-block date2">
-                                    <div  class="date-label">
-                                        <div class="icon icon--date"></div>
-                                        <div class="text">计算交期</div>
                                     </div>
-                                    <div  class="date-text">{{order.release_date}}</div>
+                                    <div class="date-block date2">
+                                        <div  class="date-label">
+                                            <div class="icon icon--date"></div>
+                                            <div class="text">计算交期</div>
+                                        </div>
+                                        <div  class="date-text">{{order.release_date}}</div>
+                                    </div>
                                 </div>
-                                <div>
+                                <div class="date-right">
                                     <van-circle
+                                        size="50"
                                         value="25"
                                         layer-color="#D7E3FD"
                                         color="#3775F6"
+                                        stroke-width="6"
                                         text="60%"
                                         />
-
-
                                 </div>
                             </div>
                    
@@ -237,27 +248,25 @@
         onLoad(options) {
         },
         async mounted() {
-            let data = JSON.parse(decodeURIComponent(this.$mp.query.data))
+            //let data = JSON.parse(decodeURIComponent(this.$mp.query.data))
 
           
         },
         async onPullDownRefresh(){
-            this.searchAfter = [];
-            this.goods = [];
+
 
           
             wx.stopPullDownRefresh();
-            //this.getGoods(this.distanceValue, this.searchAfter);
         },
         onReachBottom(){
          
         },
         methods:{
             // 跳转到商品详情页
-            goProductionDetail(good){
-                let param_str = encodeURIComponent(JSON.stringify(good));
-                this.$push(`/pages/product-detail/main?data=${param_str}`);
-            }
+            // goProductionDetail(good){
+            //     let param_str = encodeURIComponent(JSON.stringify(good));
+            //     this.$push(`/pages/product-detail/main?data=${param_str}`);
+            // }
         }
     }
 </script>

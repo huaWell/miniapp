@@ -33,11 +33,7 @@
     "pages/production-help-search/main",
     "pages/production-list-search/main",
     "pages/circle-h5/main",
-    "pages/my-fresh/main",
-    "pages/h5-webview/main",
-    "pages/h5-webview-circle/main",
-    "pages/h5-webview-good-share/main",
-    "pages/object/main"
+    "pages/my-fresh/main"
   ],
   "window":
   {
