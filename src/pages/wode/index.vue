@@ -130,18 +130,18 @@
     <div class="header-wrapper">
       <div class="left">
         <div class="name">{{name}}</div>
-        <div class="desc">加入圈子已经 {{days}} 天</div>
+        <div class="desc">重剑无锋，大巧不工</div>
       </div>
       <span class="flex"></span>
       <div class="avatar-block" @click="onEditInfo">
-        <img :src="userInfo.secCheckStatus==1?userInfo.newHeadImg:userInfo.headImg" alt="" class="avatar">
+        <img :src="bugong" alt="" class="avatar">
         <div class="icon icon--edit"></div>
         <div class="icon icon--check" v-if="userInfo.secCheckStatus==1"></div>
       </div>
     </div>
     <div class="cell-group-wrapper">
       <van-cell-group :border="false">
-        <van-cell @click="onGotoMyCollection" custom-class="my-van-cell--large" size="large" title="我的收藏" is-link>
+        <van-cell @click="onGotoMyCollection" custom-class="my-van-cell--large" size="large" title="代办功能1" is-link>
           <div slot="icon" class="icon icon--collection"></div>
         </van-cell>
 
@@ -150,19 +150,19 @@
           <div class="message-num">100</div>
         </van-cell> -->
 
-        <van-cell @click="onGotoMyPublish" custom-class="my-van-cell--large" size="large" title="我的发布" is-link>
+        <van-cell @click="onGotoMyPublish" custom-class="my-van-cell--large" size="large" title="代办功能2" is-link>
           <div slot="icon" class="icon icon--publish"></div>
         </van-cell>
 
-        <van-cell @click="onGotoMyAskBuy" custom-class="my-van-cell--large" size="large" title="我的求购" is-link>
+        <van-cell @click="onGotoMyAskBuy" custom-class="my-van-cell--large" size="large" title="代办功能3" is-link>
           <div slot="icon" class="icon icon--ask-buy"></div>
         </van-cell>
 
-        <van-cell @click="onGotoMyFresh" custom-class="my-van-cell--large" size="large" title="我的新鲜事" is-link>
+        <van-cell @click="onGotoMyFresh" custom-class="my-van-cell--large" size="large" title="代办功能4" is-link>
           <div slot="icon" class="icon icon--fresh"></div>
         </van-cell>
 
-        <van-cell @click="onGotoObject" custom-class="my-van-cell--large" size="large" title="物品管理" is-link>
+        <van-cell @click="onGotoObject" custom-class="my-van-cell--large" size="large" title="代办功能5" is-link>
           <div slot="icon" class="icon icon--fresh"></div>
         </van-cell>
 
@@ -176,58 +176,38 @@
             <div class="qipao" :show="showTip">{{tip}}</div>
     </div>
 
-    <div>
+    <!-- <div>
       <button class="kefu" open-type="contact">
           <div class="icon icon--kefu"></div>
           <div class="kefu-text">联系客服</div>
       </button>
-    </div>
+    </div> -->
 
   </div>
 </template>
 <script>
 import qs from 'querystring'
+import bugong from '@/assets/bugong.png'
 
 export default {
   name: 'Wode',
   components: {},
   data() {
     return {
-      name: '',
+      name: '测试',
       avatar:'',
       days: 0,
       showTip:false,
       tip: '此处可修改你的头像和名字',
-      userInfo:{}
+      userInfo:{},
+      bugong:bugong
     }
   },
   mounted() {
-    //let user_info = wx.getStorageSync('user_info');
-    // if (user_info == "") {
-    //   this.name = "微信用户";
-    //   this.avatar = "https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF";
-    // } else {
-    //   user_info = JSON.parse(user_info);
-    //   this.name = user_info.name;
-    //   this.avatar = user_info.avatar;
-    // }
+
     
   },
   async onShow () {
-    
-    let session_key = wx.getStorageSync("session_key");
-    if (session_key == "") {
-      this.$push('/pages/login/main');
-    } else {
-      let res = await this.R.fetchGetUserInfo();
-      this.userInfo = res.data.data;
-      
-      this.name = res.data.data.name;
-      this.avatar = res.data.data.headImg;
-      this.days = res.data.data.days;
-    }
-
-    this.showTip = this.$store.state.userIsFirstLogin;
   },
   methods: {
     hideTip(){
@@ -238,35 +218,28 @@ export default {
       let param = {name: this.name, avatar: this.avatar};
       
       let param_str = encodeURIComponent(JSON.stringify(param));
-      this.$push(`/pages/user-info/main?data=${param_str}`)
+
     },
     onGotoMessage () {
-      this.$push('/pages/message/main')
+ 
     },
     onGotoMyPublish () {
-      this.$push('/pages/my-publish/main')
+
     },
     onGotoMyCollection () {
-      this.$push('/pages/my-collection/main')
+
     },
     onWX () {
-      this.$push('/pages/wx/main')
+
     },
     onGotoMyAskBuy(){
-      this.$push('/pages/my-ask-buy/main')
+
     },
      onGotoMyFresh(){
-      this.$push('/pages/my-fresh/main')
+      
     },
     async onGotoObject(){
-      //let {latitude, longitude} = await getLocation()
-      let session_key = wx.getStorageSync("session_key");
-      console.log(session_key)
-      this.$push(`/pages/object/main?${qs.stringify({
-        sessionKey: session_key,
-        latitude: "",
-        longitude: "",
-      })}`)
+      //let {latitude, longitude} = await getLocation()  
     }
   }
 }

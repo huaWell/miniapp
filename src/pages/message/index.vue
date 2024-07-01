@@ -118,7 +118,6 @@ export default {
   name: 'Message',
   components: {},
   computed: {
-    ...mapState(['chatList'])
   },
   data() {
     return {
@@ -137,77 +136,34 @@ export default {
     }
   },
   onShow() {
-    this.afterLogin(() => {
-      wx.removeTabBarBadge({ index: 3 })
-      // if (wx.getStorageSync('session_key') && !wx.getStorageSync('isLoaded')) {
-      //   wx.setStorageSync('isLoaded', 1)
-      //   this.$store.dispatch('fetchChatList')
-      // }
-      if (wx.getStorageSync('session_key')) {
-        this.$store.dispatch('fetchChatList')
-      }
-    })
+      //wx.removeTabBarBadge({ index: 3 })
+
   },
   onReachBottom() {
-    if (this.activeTab == 1 && this.hasMore) {
-      this.fetchSystemMessages();
-    }
+
   },
   async onPullDownRefresh() {
-    await this.$store.dispatch('fetchChatList')
+  
     wx.stopPullDownRefresh();
-    this.$toast.success('刷新成功')
+
   },
   async mounted() {},
   methods: {
     onChangeTab(e) {
       this.activeTab = e.mp.detail.index;
-      if (this.activeTab == 1 && this.systemMessages.length == 0) {
-        this.fetchSystemMessages()
-      }
+
     },
     onGotoSystemMessage(item) {
-      /* 外部跳转 */
-      if (item.jumpType == 3) {
-        this.$push(`/pages/webview/main?url=${encodeURIComponent(item.url)}`)
-      } else if (item.jumpType == 2) {
-        this.$push(item.url)
-      } else if (item.jumpType == 1) {
-        return;
-      }
+
     },
     async fetchSystemMessages() {
-      try {
-        let res = await this.R.fetchSystemMessages({
-          cursor: this.cursor,
-          limit: this.limit
-        })
-        if (res.data.code == 0) {
-          res.data.data.results.forEach(item => {
-
-            let t = getTimeObj(item.createdTime * 1000)
-            item.date = `${t.year}/${t.month}/${t.day}`
-          })
-          this.systemMessages = this.systemMessages.concat(res.data.data.results)
-          this.hasMore = res.data.data.hasMore
-          this.cursor = res.data.data.nextCursor
-        }
-
-      } catch (err) {
-
-      }
+  
     },
     onGotoChat(chat) {
-      this.$push(`/pages/chat/main?${qs.stringify({
-        contactId: chat.contactId
-      })}`)
+    
     },
     toMyCenter(chat) {
-      let param_str = encodeURIComponent(JSON.stringify({
-        id: chat.contactId,
-        isSelf: 0
-      }))
-      this.$push(`/pages/my-center/main?data=${param_str}`)
+    
     }
   }
 }
