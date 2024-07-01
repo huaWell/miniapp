@@ -94,7 +94,7 @@
 <script>
 import Search from '@/components/Search.vue'
 import mpCharts from '@/components/MpCharts.vue'
-import * as echarts from "echarts";
+import * as echarts from '../../../static/lib/echarts.min.js';
 
 
 const jump = () => {

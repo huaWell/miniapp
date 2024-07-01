@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import * as echarts from 'echarts';
+import * as echarts from '../../static/lib/echarts.min.js';
 import mpvueEcharts from 'mpvue-echarts';
 let chart = null;
 export default {
