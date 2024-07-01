@@ -48,7 +48,6 @@
   }
 
   .todo-items {
-    margin-top: 50px;
     display: flex;
     gap: 8px;
 

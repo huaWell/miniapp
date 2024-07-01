@@ -1,7 +1,6 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "供应链管家",
   "enablePullDownRefresh": true,
-  "navigationStyle": "custom",
 	"usingComponents": {
 	  "van-tab": "/static/vant-weapp/tab/index",
 	  "van-tabs": "/static/vant-weapp/tabs/index",
