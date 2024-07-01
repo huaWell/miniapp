@@ -6,7 +6,7 @@
   gap: 8px;
   padding: 8px;
   box-sizing: border-box;
-  background-color: red !important;
+  background-color: #f1f5fa !important;
   flex-direction: column;
 
   .card {
@@ -51,13 +51,13 @@
 <template>
   <div class="container">
     <div class="card" style="height: 300px;">
-      <div class="title">产能利用趋势</div>
+      <div class="title">成品库存量</div>
       <div class="content">
         <mp-charts :options="options" :canvasId="'chart1'" />
       </div>
     </div>
     <div class="card" style="height: 300px;">
-      <div class="title">产线产能利用率</div>
+      <div class="title">库存结构</div>
       <div class="content">
         <mp-charts :options="options1" :canvasId="'chart2'" />
       </div>
@@ -75,36 +75,6 @@ export default {
   data() {
     return {
       options: {
-        xAxis: [
-          {
-            type: 'category',
-            data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-            axisPointer: {
-              label: {
-                formatter: function (params) {
-                  return 'week' + params.value;
-                }
-              }
-            }
-          }
-        ],
-        yAxis: [
-          {
-            type: 'value',
-            min: 0,
-            max: 100,
-            interval: 20,
-            axisLabel: {
-              formatter: '{value} %'
-            }
-          }
-        ],
-        grid: {
-          left: 40,
-          right: '0%',
-          bottom: 20,
-          top: 20
-        },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -114,65 +84,110 @@ export default {
             }
           }
         },
+        legend: {
+          position: 'center',
+          bottom: 0,
+          itemHeight: 8,
+          itemWidth: 14,
+        },
+        grid: {
+          left: '0%',
+          right: '0%',
+          bottom: 30,
+          top: 30,
+          containLabel: true
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: ['成品A', '成品B', '成品C', '成品D', '成品E'],
+            axisPointer: {
+              type: 'shadow'
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            name: '单位: K',
+            min: 0,
+            max: 100,
+            interval: 20
+          },
+          {
+            type: 'value',
+            // name: 'Temperature',
+            min: 0,
+            max: 100,
+            interval: 20,
+            axisLabel: {
+              formatter: '{value} %'
+            }
+          }
+        ],
         series: [
           {
-            data: [27, 33, 29, 36, 30, 40, 27, 47, 30, 63, 13, 100],
-            type: 'line',
-            symbol: 'none',
+            name: '数量（箱）',
+            type: 'bar',
+            tooltip: {
+              valueFormatter: function (value) {
+                return value + 'K';
+              }
+            },
+            barWidth: 23,
             color: '#165DFF',
-            smooth: true,
+            data: [80, 76, 68, 62, 58]
+          },
+          {
+            name: '库存占比',
+            type: 'line',
+            yAxisIndex: 1,
+            color: '#14C9C9',
             tooltip: {
               valueFormatter: function (value) {
                 return value + '%';
               }
-            }
+            },
+            data: [30, 59, 70, 70, 80]
           }
         ]
       },
       options1: {
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow'
-          }
-        },
-        grid: {
-          left: 5,
-          right: 20,
-          bottom: 1,
-          top: 5,
-          containLabel: true
-        },
-        xAxis: {
-          type: 'value',
-          min: 0,
-          max: 100,
-          interval: 20,
-          axisLabel: {
-            formatter: '{value} %'
-          }
-        },
-        yAxis: {
-          type: 'category',
-          inverse: true,
-          data: ['产线1', '产线2', '产线3', '产线4', '产线5', '产线6', '产线7']
+        graphic: {
+          elements: [
+            {
+              type: 'text',
+              right: 'center',
+              bottom: 'center',
+              style: {
+                text: '总库存占比\n\n75%',
+                textAlign: 'center'
+              },
+              z: 100
+            }
+          ]
         },
         series: [
           {
-            name: '2011',
-            type: 'bar',
-            seriesLayoutBy: 'column',
-            data: [98, 80, 75, 99, 17, 8, 17],
-            color: '#165DFF',
-            barWidth: 7,
-            realtimeSort: true,
+            name: 'Access From',
+            type: 'pie',
+            radius: ['45', '60'],
             label: {
               show: true,
-              position: 'right',
-              valueAnimation: true,
-              fontFamily: 'monospace',
-              formatter: '{c}%'
-            }
+              position: 'outside',
+              alignTo: 'labelLine',
+              formatter: '{b}: {d}%'
+            },
+            labelLine: {
+              showAbove: true,
+              length: 5,
+              length2: 40
+            },
+            data: [
+              { value: 30, name: '原材料' },
+              { value: 40, name: '成品' },
+              { value: 30, name: '半成品' }
+            ]
           }
         ]
       }

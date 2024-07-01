@@ -4,7 +4,7 @@
 .container{
             width: 100%;
             height: 100%;
-            background: #F1F2F4;
+            background: #f1f5fa;
         }
         .card{
             border-radius: 6px;

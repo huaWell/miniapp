@@ -6,7 +6,7 @@
   gap: 8px;
   padding: 8px;
   box-sizing: border-box;
-  background-color: red !important;
+  background-color: #f1f5fa !important;
   flex-direction: column;
 
   .card {
@@ -51,13 +51,13 @@
 <template>
   <div class="container">
     <div class="card" style="height: 300px;">
-      <div class="title">产能利用趋势</div>
+      <div class="title">品类达交率</div>
       <div class="content">
         <mp-charts :options="options" :canvasId="'chart1'" />
       </div>
     </div>
     <div class="card" style="height: 300px;">
-      <div class="title">产线产能利用率</div>
+      <div class="title">未履约原因分析</div>
       <div class="content">
         <mp-charts :options="options1" :canvasId="'chart2'" />
       </div>
@@ -68,29 +68,53 @@
 import mpCharts from '@/components/MpCharts.vue'
 
 export default {
-  name: 'delayOrderDetails',
+  name: 'performanceDetails',
   components: {
     mpCharts
   },
   data() {
     return {
       options: {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'cross',
+            crossStyle: {
+              color: '#999'
+            }
+          },
+          formatter: function (params) {
+
+            let tooltipContent = params[0].name + '<br>';
+            params.forEach(function (param) {
+              if (param.value == 0) return;
+              const seriesName = param.seriesName;
+              tooltipContent += seriesName + ': ' + param.value + '%' + '<br>';
+              tooltipContent += '达交量' + ': ' + param.value * 30 + '吨' + '<br>';
+            });
+            return tooltipContent;
+          }
+        },
+        grid: {
+          left: '0%',
+          right: '0%',
+          bottom: 5,
+          top: 10,
+          containLabel: true
+        },
         xAxis: [
           {
             type: 'category',
-            data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+            data: ['品类1', '品类2', '品类3', '品类4', '品类5'],
             axisPointer: {
-              label: {
-                formatter: function (params) {
-                  return 'week' + params.value;
-                }
-              }
+              type: 'shadow'
             }
           }
         ],
         yAxis: [
           {
             type: 'value',
+            name: '',
             min: 0,
             max: 100,
             interval: 20,
@@ -99,83 +123,51 @@ export default {
             }
           }
         ],
-        grid: {
-          left: 40,
-          right: '0%',
-          bottom: 20,
-          top: 20
-        },
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'cross',
-            crossStyle: {
-              color: '#999'
-            }
-          }
-        },
         series: [
           {
-            data: [27, 33, 29, 36, 30, 40, 27, 47, 30, 63, 13, 100],
-            type: 'line',
-            symbol: 'none',
-            color: '#165DFF',
-            smooth: true,
+            name: '达交率',
+            type: 'bar',
             tooltip: {
               valueFormatter: function (value) {
                 return value + '%';
               }
-            }
+            },
+            barWidth: 23,
+            emphasis: {
+              focus: 'series'
+            },
+            color: '#165DFF',
+            data: [80, 76, 68, 62, 58],
           }
         ]
       },
       options1: {
-        tooltip: {
-          trigger: 'axis',
-          axisPointer: {
-            type: 'shadow'
-          }
-        },
-        grid: {
-          left: 5,
-          right: 20,
-          bottom: 1,
-          top: 5,
-          containLabel: true
-        },
-        xAxis: {
-          type: 'value',
-          min: 0,
-          max: 100,
-          interval: 20,
-          axisLabel: {
-            formatter: '{value} %'
-          }
-        },
-        yAxis: {
-          type: 'category',
-          inverse: true,
-          data: ['产线1', '产线2', '产线3', '产线4', '产线5', '产线6', '产线7']
-        },
         series: [
-          {
-            name: '2011',
-            type: 'bar',
-            seriesLayoutBy: 'column',
-            data: [98, 80, 75, 99, 17, 8, 17],
-            color: '#165DFF',
-            barWidth: 7,
-            realtimeSort: true,
-            label: {
-              show: true,
-              position: 'right',
-              valueAnimation: true,
-              fontFamily: 'monospace',
-              formatter: '{c}%'
+            {
+                name: 'Access From',
+                type: 'pie',
+                radius: ['45', '60'],
+                label: {
+                    show: true,
+                    position: 'outside',
+                    alignTo: 'labelLine',
+                    formatter: '{b}: {d}%'
+                },
+                labelLine: {
+                    showAbove: true,
+                    length: 5,
+                    length2: 10
+                },
+                data: [
+                    { value: 30, name: '供应延期' },
+                    { value: 20, name: '模具不足' },
+                    { value: 20, name: '人力不足' },
+                    { value: 10, name: '机台瓶颈' },
+                    { value: 20, name: '其他' }
+                ]
             }
-          }
         ]
-      }
+    }
     }
   },
   async onPullDownRefresh() {

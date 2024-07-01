@@ -6,7 +6,7 @@
   gap: 8px;
   padding: 8px;
   box-sizing: border-box;
-  background-color: red !important;
+  background-color: #f1f5fa !important;
   flex-direction: column;
 
   .card {

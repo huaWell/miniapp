@@ -1,4 +1,3 @@
-<!-- src/components/EChartsComponent.vue -->
 <template>
   <div style="width: 100%;height: 100%;background-color: #fff;">
     <ec-canvas :id="canvasId" :canvas-id="canvasId" ref="canvas" :ec="ec" @init="onChartInit" :echarts="echarts" />
@@ -8,6 +7,8 @@
 <script>
 import * as echarts from '../../static/lib/echarts.min.js';
 import mpvueEcharts from 'mpvue-echarts';
+const systemInfo = wx.getSystemInfoSync();
+const devicePixelRatio = systemInfo.pixelRatio;
 let chart = null;
 export default {
   components: {
@@ -35,10 +36,12 @@ export default {
     onChartInit({ canvas, canvasWidth, canvasHeight }) {
       chart = echarts.init(canvas, null, {
         width: canvasWidth,
-        height: canvasHeight
+        height: canvasHeight,
+        devicePixelRatio: devicePixelRatio
       })
       canvas.setChart(chart);
       this.updateChart();
+      return chart
     },
     updateChart() {
       if (chart) {

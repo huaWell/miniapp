@@ -6,7 +6,7 @@
   gap: 8px;
   padding: 8px;
   box-sizing: border-box;
-  background-color: red !important;
+  background-color: #f1f5fa !important;
   flex-direction: column;
 
   .card {
@@ -46,17 +46,75 @@
       }
     }
   }
+
+  .todo-items {
+    margin-top: 50px;
+    display: flex;
+    gap: 8px;
+
+    .todo-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      padding: 12px;
+      border-radius: 4px;
+      gap: 4px;
+
+      .title {
+        font-size: 12px;
+        color: #333333;
+      }
+
+      .value {
+        font-size: 12px;
+        color: #1677ff;
+      }
+
+      .body {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        .text {
+          font-size: 10px;
+          color: #666666;
+        }
+
+        .value {
+          font-size: 10px;
+          color: #ff4a58;
+        }
+      }
+    }
+  }
+
+
 }
 </style>
 <template>
   <div class="container">
+    <div class="todo-items">
+      <div class="todo-item" v-for="(item, index) in items" :key="index">
+        <div class="title">{{ item.title }}</div>
+        <div class="value">{{ item.value }}</div>
+        <div class="body">
+          <div class="text">
+            {{ item.type_name }}
+          </div>
+          <div class="value">
+            {{ item.type_value }}
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="card" style="height: 400px;" @click="jump">
       <div class="title">履约趋势</div>
       <div class="content">
         <mp-charts :options="options" :canvasId="'chart1'" />
       </div>
     </div>
-    <div class="card" style="height: 100px;"  @click="jump1">
+    <div class="card" style="height: 100px;" @click="jump1">
       <div class="content">
         <div class="text">
           <div class="description">成品库存总量</div>
@@ -67,7 +125,7 @@
         </div>
       </div>
     </div>
-    <div class="card" style="height: 100px;"  @click="jump2">
+    <div class="card" style="height: 100px;" @click="jump2">
       <div class="content">
         <div class="text">
           <div class="description">大客户履约率</div>
@@ -96,31 +154,6 @@ import Search from '@/components/Search.vue'
 import mpCharts from '@/components/MpCharts.vue'
 import * as echarts from '../../../static/lib/echarts.min.js';
 
-
-const jump = () => {
-  wx.reLaunch({
-    url: `/pages/delay-order-details/main`
-  })
-};
-
-const jump1 = () => {
-  wx.reLaunch({
-    url: `/pages/inventory-details/main`
-  })
-};
-
-const jump2 = () => {
-  wx.reLaunch({
-    url: `/pages/performance-details/main`
-  })
-};
-
-const jump3 = () => {
-  wx.reLaunch({
-    url: `/pages/use-ratio/main`
-  })
-};
-
 export default {
   name: 'Home',
   components: {
@@ -129,6 +162,26 @@ export default {
   },
   data() {
     return {
+      items: [
+        {
+          title: '订单履约率',
+          value: '80%',
+          type_name: '环比',
+          type_value: '0.14+'
+        },
+        {
+          title: '产能利用率',
+          value: '85%',
+          type_name: '环比',
+          type_value: '0.14+'
+        },
+        {
+          title: '延误订单（预测）',
+          value: '10',
+          type_name: '环比',
+          type_value: '0.14+'
+        }
+      ],
       options: {
         tooltip: {
           trigger: 'axis',
@@ -399,10 +452,18 @@ export default {
   },
 
   methods: {
-    jump,
-    jump1,
-    jump2,
-    jump3
+    jump() {
+      this.$push(`/pages/delay-order-details/main`);
+    },
+    jump1() {
+      this.$push(`/pages/inventory-details/main`);
+    },
+    jump2() {
+      this.$push(`/pages/performance-details/main`);
+    },
+    jump3() {
+      this.$push(`/pages/use-ratio/main`);
+    }
   }
 }
 </script>
