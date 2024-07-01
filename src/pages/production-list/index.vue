@@ -71,9 +71,11 @@
                         display: flex;
                         flex-direction: row;
                         align-items: center;
+                        flex: 1;
                     }
                     .date-right{
-
+                        z-index: 1 !important;
+                        width: 12vw;
                     }
 
                     .date-block{
@@ -110,7 +112,6 @@
                 }
             }
         }
-        
 </style>
 
 <template> 
@@ -118,8 +119,10 @@
         <div class="my-tab-item-4">
                 <van-dropdown-menu
                     active-color="#ACADBB"
+                 
                 >
                     <van-dropdown-item 
+                    custom-class="my-dropdown-menu"
                         :value="value1" 
                         :options="option1"
                          @change="chooseDistance" />
@@ -172,6 +175,7 @@
                                     </div>
                                 </div>
                                 <div class="date-right">
+                                    <!-- <mp-charts :options="options" :canvasId="`chart${index}`" /> -->
                                     <van-circle
                                         size="50"
                                         value="25"
@@ -179,6 +183,7 @@
                                         color="#3775F6"
                                         stroke-width="6"
                                         text="60%"
+                                        style="position: absolute;"
                                         />
                                 </div>
                             </div>
@@ -197,13 +202,57 @@
 
 <script>
     import qs from 'querystring'
+    import mpCharts from '@/components/MpCharts.vue'
 
     export default {
         name: 'ProductionList',
         components: {
+            mpCharts
         },
         data(){
             return {
+                options: {
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          show: false
+        },
+        yAxis: {
+          show: false,
+          type: 'value'
+        },
+        grid: {
+          left: '0%',
+          right: '0%',
+          bottom: '0%',
+          top: '0%'
+        },
+        series: [
+          {
+            data: [800, 1000, 850, 1100, 900, 1200, 820, 1400, 900, 1900, 400, 3000],
+            type: 'line',
+            symbol: 'none',
+            color: "#F53F3F",
+            smooth: true,
+            lineStyle: {
+              width: 1,
+            },
+            areaStyle: {
+              opacity: 0.8,
+            //   color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            //     {
+            //       offset: 0,
+            //       color: "#F53F3F"
+            //     },
+            //     {
+            //       offset: 1,
+            //       color: '#FFFFFF'
+            //     }
+            //   ])
+            }
+          }
+        ]
+      },
                 option1: [
                     { text: '全部订单', value: 0 },
                     { text: '需求订单', value: 1 },
@@ -242,7 +291,8 @@
                         origin_date: "2024-06-28",
                         custom_name:'客户名'
                     }
-                ]
+                ],
+                circleZIndex: 1
             }
         },
         onLoad(options) {

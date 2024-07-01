@@ -62,8 +62,39 @@ VantComponent({
     },
     data: {
         hoverColor: BLUE,
+        imageSrc:""
     },
     methods: {
+        getCanvasImgeUrl(immediately){
+            const { value, speed } = this.data;
+            console.log(immediately,'immediately')
+            if(immediately){
+                this.canvasToImage()
+                return
+            }
+            if(this.currentValue  === value && this.currentValue){
+                this.canvasToImage()
+            }
+           
+        },
+        canvasToImage (){
+            wx.canvasToTempFilePath({
+                x: 0,
+                y: 0,
+                canvasId: 'van-circle',
+                fileType: 'png',
+                quality: 1,
+                success: (res) => {
+                  this.setData({
+                    imageSrc:res.tempFilePath
+                  })
+                  // this.canvas.draw()
+                },
+                fail: (e) => {
+                  console.log('eeee', e)
+                }
+            }, this)
+        },
         getContext() {
             const { type, size } = this.data;
             if (type === '' || !canIUseCanvas2d()) {
@@ -93,6 +124,8 @@ VantComponent({
             const { color, size } = this.data;
             if (isObj(color)) {
                 return this.getContext().then((context) => {
+                    if (!context)
+                        return;
                     const LinearColor = context.createLinearGradient(size, 0, 0, 0);
                     Object.keys(color)
                         .sort((a, b) => parseFloat(a) - parseFloat(b))
@@ -131,16 +164,18 @@ VantComponent({
                 : 3 * Math.PI - (BEGIN_ANGLE + progress);
             this.presetCanvas(context, this.hoverColor, BEGIN_ANGLE, endAngle);
         },
-        drawCircle(currentValue) {
+        drawCircle(currentValue,isFinall) {
             const { size } = this.data;
             this.getContext().then((context) => {
+                if (!context)
+                    return;
                 context.clearRect(0, 0, size, size);
                 this.renderLayerCircle(context);
                 const formatValue = format(currentValue);
                 if (formatValue !== 0) {
                     this.renderHoverCircle(context, formatValue);
                 }
-                context.draw();
+                context.draw(false,()=>this.getCanvasImgeUrl(isFinall));
             });
         },
         reRender() {
@@ -150,6 +185,9 @@ VantComponent({
                 this.drawCircle(value);
                 return;
             }
+            this.setData({
+                imageSrc:null
+              })
             this.clearMockInterval();
             this.currentValue = this.currentValue || 0;
             const run = () => {
@@ -184,7 +222,7 @@ VantComponent({
     mounted() {
         this.currentValue = this.data.value;
         this.setHoverColor().then(() => {
-            this.drawCircle(this.currentValue);
+            this.drawCircle(this.currentValue,true);
         });
     },
     destroyed() {
