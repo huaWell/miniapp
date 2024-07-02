@@ -59,8 +59,8 @@
       {
         "pagePath": "pages/workcenter/main",
         "text": "工作台",
-        "iconPath": "/static/circle.png",
-        "selectedIconPath": "/static/circle-active.png"
+        "iconPath": "/static/workcenter.png",
+        "selectedIconPath": "/static/workcenter-active.png"
       },
       {
         "pagePath": "pages/publish/main",
