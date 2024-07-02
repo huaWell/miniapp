@@ -2,7 +2,6 @@
   "pages": [
     "pages/home/main",
     "pages/mall/main",
-    "pages/guide/main",
     "pages/community/main",
     "pages/wode/main",
     "pages/workcenter/main",
