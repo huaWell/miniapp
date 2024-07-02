@@ -50,7 +50,7 @@ export default {
     }
   },
   watch: {
-    option: {
+    options: {
       handler() {
         this.updateChart();
       },

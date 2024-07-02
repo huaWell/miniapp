@@ -121,7 +121,13 @@ export default {
         name:'订单',
         url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390',
         path:'/pages/production-list/main'
-      }]
+      },
+      {
+        name:'质检分析',
+        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390',
+        path:'/pages/quality-analysis/main'
+      }
+    ]
     },
     {
       name: '需求管理',

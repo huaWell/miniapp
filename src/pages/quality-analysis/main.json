@@ -1,0 +1,7 @@
+{
+	"navigationBarTitleText": "质检分析",
+	"usingComponents": {
+    "van-tab": "/static/vant-weapp/tab/index",
+	  "van-tabs": "/static/vant-weapp/tabs/index"
+	}
+}
