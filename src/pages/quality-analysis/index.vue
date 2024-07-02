@@ -1,6 +1,6 @@
 <style lang="less" scoped>
 .container {
-  --tabs-default-color: #165dff;
+  // --tabs-default-color: #165dff;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -64,7 +64,7 @@
       <div class="bar">
         <div class="title">质检通过率</div>
         <div class="operation" style="width: 40%;">
-          <van-tabs @change="handlerChange" type="card">
+          <van-tabs @change="handlerChange" type="card" color="#1989fa">
             <van-tab title="客户"></van-tab>
             <van-tab title="产品"></van-tab>
           </van-tabs>
