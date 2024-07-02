@@ -9,6 +9,7 @@
     "pages/inventory-details/main",
     "pages/performance-details/main",
     "pages/quality-analysis/main",
+    "pages/production-list-details/main",
     "pages/use-ratio/main",
     "pages/user-info/main",
     "pages/message/main",
