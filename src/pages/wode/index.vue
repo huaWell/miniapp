@@ -162,10 +162,6 @@
           <div slot="icon" class="icon icon--fresh"></div>
         </van-cell>
 
-        <van-cell @click="onGotoObject" custom-class="my-van-cell--large" size="large" title="代办功能5" is-link>
-          <div slot="icon" class="icon icon--fresh"></div>
-        </van-cell>
-
         <!-- <van-cell custom-class="my-van-cell--large" size="large" title="设置" is-link :border="false">
           <div slot="icon" class="icon icon--setting"></div>
         </van-cell> -->
@@ -194,7 +190,7 @@ export default {
   components: {},
   data() {
     return {
-      name: '测试',
+      name: '不工',
       avatar:'',
       days: 0,
       showTip:false,
