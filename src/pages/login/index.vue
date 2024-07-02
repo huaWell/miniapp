@@ -75,7 +75,7 @@
     </div>
 
     <div class="background-container">
-      <img class="background-image" :src="loginBackground" alt="">
+      <img class="background-image"  alt="">
     </div>
 
 <!-- 
@@ -123,7 +123,6 @@
 
   import GetPhoneNumber from '@/components/getPhoneNumber'
   import GetUserInfo from '@/components/GetUserInfo'
-  import LoginBackground from '@/assets/login-background.png'
 
   export default {
     name: 'Login',
@@ -133,7 +132,6 @@
     },
     data () {
       return {
-         loginBackground: LoginBackground,
          code: "",
          nickName:'',
          avatar: '',
