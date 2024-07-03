@@ -1,7 +1,7 @@
 <style lang="less" scoped>
 .container {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   gap: 8px;
   padding: 8px;
@@ -27,6 +27,7 @@
     .content {
       flex: 1;
       display: flex;
+      width: 100%;
       gap: 4px;
 
       .text {
@@ -62,10 +63,51 @@
         <mp-charts :options="options1" :canvasId="'chart2'" />
       </div>
     </div>
+    <div class="card" style="height: 300px;">
+      <div class="title">产能</div>
+      <div class="content">
+        <mp-charts :options="options2" :canvasId="'chart3'" />
+      </div>
+    </div>
+
+    <div class="card" style="height: 120px;" v-for="(order, index) in orders" :key="index">
+      <div class="title">{{ order.name }}</div>
+      <div class="content" style="justify-content: space-around;">
+        <div class="text" style="color: #ccc;">{{ order.sku }}</div>
+        <div class="text" style="color: #ccc;">利润: {{ order.profit }}</div>
+        <div class="tag">
+          <van-circle size="70" :value="order.ratio1" layer-color="#D7E3FD" color="#3775F6" stroke-width="6"
+            :text="order.text1" />
+        </div>
+        <div class="tag">
+          <van-circle size="70" :value="order.ratio2" layer-color="#D7E3FD" color="#3775F6" stroke-width="6"
+            :text="order.text2" />
+        </div>
+      </div>
+    </div>
+
   </div>
 </template>
 <script>
 import mpCharts from '@/components/MpCharts.vue'
+
+const getMonths = () => {
+  // 获取当前的月份（从1开始）
+  const currentMonth = (new Date()).getMonth() + 1;
+
+  // 构建包含前7个月份名称的数组，确保第五个元素是当前月份
+  let months = [];
+  for (let i = 1; i <= 7; i++) {
+    const monthIndex = currentMonth - 5 + i; // 计算当前月份之前的月份
+    if (monthIndex > 0) {
+      months.push(`${monthIndex}月`);
+    } else {
+      months.push(`${monthIndex + 12}月`); // 处理跨年情况，12月之前的月份应该是前一年的月份
+    }
+  }
+
+  return months;
+};
 
 export default {
   name: 'delayOrderDetails',
@@ -175,7 +217,140 @@ export default {
             }
           }
         ]
-      }
+      },
+      options2: {
+        legend: {
+          bottom: 'bottom',
+          left: 'center',
+          itemWidth: 8,
+          itemHeight: 8,
+          data: [
+            {
+              name: '产能占用',
+            },
+            {
+              name: '产能富余'
+            },
+            {
+              name: '预计产能占用',
+              itemStyle: {
+                borderType: 'dashed',
+                borderWidth: 1,
+                color: 'transparent',
+                borderColor: '#165DFF'
+              }
+            },
+            {
+              name: '预计产能富余',
+              itemStyle: {
+                borderType: 'dashed',
+                borderWidth: 1,
+                color: 'transparent',
+                borderColor: '#14c9c9'
+              }
+            }
+          ]
+        },
+        grid: {
+          left: '0%',
+          right: '0%',
+          bottom: 30,
+          top: 10,
+          containLabel: true
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: getMonths(),
+            axisPointer: {
+              type: 'shadow'
+            }
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            min: 0,
+            max: 100,
+            interval: 20,
+          }
+        ],
+        series: [
+          {
+            name: '产能占用',
+            type: 'bar',
+            stack: 'stack',
+            color: '#165DFF',
+            data: [
+              90, 80, 50, 50, null, null, null
+            ]
+          },
+          {
+            name: '产能富余',
+            type: 'bar',
+            stack: 'stack',
+            color: '#14C9C9',
+            data: [
+              10, 20, 50, 50, null, null, null
+            ]
+          },
+          {
+            name: '预计产能占用',
+            type: 'bar',
+            stack: 'stack',
+            itemStyle: {
+              color: 'transparent',
+              borderColor: '#165DFF',
+              borderType: 'dashed'
+            },
+            data: [
+              null, null, null, null, 71, 22, 41
+            ]
+          },
+          {
+            name: '预计产能富余',
+            type: 'bar',
+            stack: 'stack',
+            itemStyle: {
+              color: 'transparent',
+              borderColor: '#14c9c9',
+              borderType: 'dashed'
+            },
+            data: [
+              null, null, null, null, 29, 78, 59
+            ]
+          }
+        ]
+      },
+      orders: [
+        {
+          name: '品类1',
+          sku: 'sku1',
+          profit: '100,000',
+          ratio1: 50,
+          ratio2: 59,
+          text1: '产能占用50%',
+          text2: '利润率59%'
+        },
+        {
+          name: '品类2',
+          sku: 'sku2',
+          profit: '150,000',
+          ratio1: 50,
+          ratio2: 59,
+          text1: '产能占用50%',
+          text2: '利润率59%'
+        },
+        {
+          name: '品类3',
+          sku: 'sku3',
+          profit: '100,000',
+          ratio1: 50,
+          ratio2: 59,
+          text1: '产能占用50%',
+          text2: '利润率59%'
+        }
+      ],
     }
   },
   async onPullDownRefresh() {
