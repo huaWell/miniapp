@@ -114,7 +114,7 @@ export default {
         url:'/static/gui.jpeg'
       },
       {
-        name:'BI报表',
+        name:'报表',
         url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
       },
       {
@@ -142,30 +142,7 @@ export default {
       {
         name:'订单跟踪',
         url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
-      },
-      {
-        name:'需求计划方案',
-        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
       }]
-    },
-    {
-      name: '库存管理',
-      guis: [{
-        name:'库存计划',
-        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
-      }]
-    },
-    {
-      name: '采购管理',
-      guis: [{
-        name:'物料需求',
-        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
-      },
-      {
-        name:'供应序列',
-        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
-      },
-      ]
     },
     {
       name: '高级计划和排产',
@@ -178,7 +155,19 @@ export default {
         url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
       },
       ]
-    }]
+    },
+    {
+      name: '供应管理',
+      guis: [{
+        name:'库存计划',
+        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
+      },
+      {
+        name:'物料需求',
+        url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390'
+      }]
+    },
+   ]
   },
   methods: {
     toPage(gui) {

@@ -141,7 +141,7 @@
     </div>
     <div class="cell-group-wrapper">
       <van-cell-group :border="false">
-        <van-cell @click="onGotoMyCollection" custom-class="my-van-cell--large" size="large" title="代办功能1" is-link>
+        <van-cell @click="onGotoMyCollection" custom-class="my-van-cell--large" size="large" title="策略参数" is-link>
           <div slot="icon" class="icon icon--collection"></div>
         </van-cell>
 

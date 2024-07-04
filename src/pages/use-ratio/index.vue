@@ -52,18 +52,6 @@
 <template>
   <div class="container">
     <div class="card" style="height: 300px;">
-      <div class="title">产能利用趋势</div>
-      <div class="content">
-        <mp-charts :options="options" :canvasId="'chart1'" />
-      </div>
-    </div>
-    <div class="card" style="height: 300px;">
-      <div class="title">产线产能利用率</div>
-      <div class="content">
-        <mp-charts :options="options1" :canvasId="'chart2'" />
-      </div>
-    </div>
-    <div class="card" style="height: 300px;">
       <div class="title">产能</div>
       <div class="content">
         <mp-charts :options="options2" :canvasId="'chart3'" />
@@ -85,6 +73,22 @@
         </div>
       </div>
     </div>
+
+    <div class="card" style="height: 300px;">
+      <div class="title">产能利用趋势</div>
+      <div class="content">
+        <mp-charts :options="options" :canvasId="'chart1'" />
+      </div>
+    </div>
+    <div class="card" style="height: 300px;">
+      <div class="title">产线产能利用率</div>
+      <div class="content">
+        <mp-charts :options="options1" :canvasId="'chart2'" />
+      </div>
+    </div>
+
+
+   
 
   </div>
 </template>
