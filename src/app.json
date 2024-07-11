@@ -63,7 +63,7 @@
         "selectedIconPath": "/static/workcenter-active.png"
       },
       {
-        "pagePath": "pages/publish/main",
+        "pagePath": "pages/webview/main",
         "text": "试算",
         "iconPath": "/static/publish.png",
         "selectedIconPath": "/static/publish.png"

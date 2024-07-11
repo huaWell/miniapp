@@ -16,14 +16,16 @@ export default {
     components:{},
     data(){
         return {
-            url: ""
+            //url: "https://product-lite.bugongsoft.com"
+            url: "https://operation.bugongsoft.com"
+            //url: "https://www.baidu.com"
         }
     },
     mounted(){
-
+        console.log(this.url)
     },
     onShow(){
-        this.url = decodeURIComponent(this.$mp.query.url)
+       // this.url = decodeURIComponent(this.$mp.query.url)
     },
     methods:{
 

@@ -148,24 +148,62 @@
 <template>
   <div class="publish-container">
     <van-cell-group :border="false">
-      <div class="name-panel" style="margin-top: 16px;" :style="{'bottom':inputHeight}">
+      <!-- <div class="name-panel" style="margin-top: 16px;" :style="{'bottom':inputHeight}">
         <div class="name-text">产品名称</div>
         <div class="name-input">
-            <!-- <van-field class="chat-input" :border='false' @input="onNameChange" :value="name" type="digit" placeholder="请输入昵称" autosize confirm-type="send" /> -->
+        
           <input type="text" placeholder="请输入产品名称" :value="productionName" @input="onProductionChange" @blur="onBlur" @focus="onFocus">
         </div>
       </div>
 
       <div class="name-panel" style="margin-top: 16px;" :style="{'bottom':inputHeight}">
+        <div class="name-text">数量</div>   
+        <div class="name-input">
+           
+          <van-field label="ceshi" />
+        </div>
+      </div> -->
+
+      <van-field
+        clearable
+        label="产品名称"
+        icon="search"
+        :value="productionName"
+        placeholder="请输入产品名称"
+        @focus="onSearch"
+      />
+      
+      <van-field
+        clearable
+        label="策略"
+        icon="search"
+        placeholder="请输入选择策略"
+      />
+
+      <van-field
+        clearable
+        type="number"
+        :value="amount"
+        label="数量"
+        placeholder="请输入数量"
+      />
+      <van-field
+        clearable
+        :value="date"
+        label="开工日期"
+        is-link="true"
+      />
+
+<!-- 
+      <div class="name-panel" style="margin-top: 16px;" :style="{'bottom':inputHeight}">
         <div class="name-text">数量</div>
         <div class="name-input">
-            <!-- <van-field class="chat-input" :border='false' @input="onNameChange" :value="name" type="digit" placeholder="请输入昵称" autosize confirm-type="send" /> -->
-          <input type="text" placeholder="请输入数量" :value="amount" @input="onAmountChange" @blur="onBlur" @focus="onFocus">
+          <input type="number" placeholder="请输入数量" :value="amount" @input="onAmountChange" @blur="onBlur" @focus="onFocus">
         </div>
       </div>
 
       <van-cell custom-class="my-van-cell--large" title="开工日期" is-link @click="showTime=true" :value="date">
-      </van-cell>
+      </van-cell> -->
     </van-cell-group>
 
     <van-button custom-class="my-van-button" type="primary" @click="calDate">计算交期</van-button>
@@ -261,12 +299,27 @@ export default {
 
   },
   async onShow() {
-    let id = decodeURIComponent(this.$mp.query.id)
+    console.log('--------------------')
+    const pages = getCurrentPages()
+    const curPage = pages[pages.length-1]
+    console.log(curPage.data)
+    console.log(curPage.data.productName)
+    this.productionName = curPage.data.productName ? curPage.data.productName : ''
   },
   async mounted() {
-   
   },
   methods: {
+    onSearch(){
+      console.log('123')
+      this.$push(`/pages/search/main`);
+
+    },
+    onClickIcon(){
+      console.log('xxxxxxxxxxxx')
+    },
+    onShowTime(){
+      this.showTime = true;
+    },
     onClose(){
       this.showResult = false
     },

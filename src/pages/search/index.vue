@@ -92,7 +92,7 @@
     <div class="search-panel">
         <van-search
             :value="value"
-            placeholder="搜索您想要的宝贝"
+            placeholder="请输入产品名/模板"
             shape="round"
             focus="true"
             use-action-slot
@@ -105,18 +105,9 @@
         </van-search>
     </div>
     <div class="search-result-panel" v-if="showSearchResult">
-        <div class="item" v-for="(item, index) in searchResults" :key="index" :index="index" @click="goProductionList(item)">
-            {{ item }}
+        <div class="item" v-for="(item, index) in searchResults" :key="index" :index="index" @click="chooseProduct(item)">
+            {{ item.displayName }}
         </div>
-    </div>
-    
-    <div class="category_panel" v-if="isCategory">
-        <div class="icon icon--category"></div>
-        <div class="category_text">
-            {{rootCategory}} > {{ category }}
-        </div>
-        <span class="flex"></span>
-        <div class="icon icon--close-fill" @click="removeCategory"></div>
     </div>
 
     <div class="search-container" v-if="searchHistory.length>0">
@@ -129,6 +120,34 @@
                 {{ tag }}
             </div>
         </div>
+    </div>
+
+    <div class="search-container" v-if="!showSearchResult && productName!=''">
+        <div class="title-panel">
+            <div class="title">参数</div>
+        </div>
+        
+        <van-cell-group :border="false">
+            <van-field
+                clearable
+                type="number"
+                value="10"
+                label="产线1工时"
+            />
+            <van-field
+                clearable
+                type="number"
+                value="10"
+                label="产线2工时"
+            />
+            <van-field
+                clearable
+                type="number"
+                value="10"
+                label="产线3工时"
+            />
+        </van-cell-group>
+        <van-button custom-class="my-van-button" type="primary" @click="confirmParam">确认</van-button>
     </div>
 
     <!-- <div class="search-container">
@@ -158,65 +177,24 @@ export default {
             value: "",
             searchResults:[],
             searchHistory:[],
-            recommendTags:[{"value":"123"},{"value":"456"},{"value":"789"}],
-            currentHistoryTagIndex:-1,
-            currentRecommendTagIndex:-1,
             showSearchResult:false,
             currentHistory:{},
-            category: "",
-            rootCategory:"",
-            rootCategoryId: 0,
-            categoryId: 0,
-            isCategory:false,
-            sortModel:'',
-            distanceValue:0,
-            IsFromHelp: 0,
-            isFromProductList:0,
-            currentDistanceIndex:0
+            mockData: [{name:"test1", displayName: "产品模板1"},
+                {name:"test2", displayName: "产品模板12"},
+                {name:"test3", displayName: "产品模板13"},
+                {name:"test4", displayName: "产品模板22"},
+                {name:"test5", displayName: "产品模板23"},
+                {name:"test6", displayName: "产品模板24"},
+                {name:"test7", displayName: "产品模板33"},
+                {name:"test8", displayName: "产品模板34"},
+                {name:"test9", displayName: "产品模板35"},
+                {name:"test10", displayName: "产品模板46"}],
+            productName: ""
         }
     },
     mounted () {
         // 1级分类
         let data = JSON.parse(decodeURIComponent(this.$mp.query.data))
-
-        
-
-        let rootCategory = data.rootCategory;
-        this.rootCategory = rootCategory == undefined ? '' : rootCategory
-
-        let rootCategoryId = data.rootCategoryId;
-        this.rootCategoryId = rootCategoryId == undefined ? '' : rootCategoryId;
-
-        // 2级分类
-        let category = data.category;
-        this.category = category == undefined ? '' : category
-
-        let categoryId = data.categoryId;
-        this.categoryId = categoryId == undefined ? '' : categoryId;
-
-        // 输入框的值
-        let value = data.value;
-        this.value = value == undefined ? '' : value
-
-        // 商品列表传参: 排序规则sortModel + 距离选择的index
-        this.sortModel = data.sortModel == undefined ? '' : data.sortModel;
-        this.distanceValue = data.distanceValue == undefined ? 0 : data.distanceValue;
-
-        // 是否从江湖救急页面跳转
-        let IsFromHelp = data.IsFromHelp;
-        this.IsFromHelp = IsFromHelp == undefined ? 0 : IsFromHelp;
-        // 江湖救急当前选择的距离
-        this.currentDistanceIndex = data.currentDistanceIndex == undefined ? 0 : data.currentDistanceIndex;
-        // 是否从商品列表或者分类页进入
-
-        // 是否显示分类块
-        this.isCategory = this.rootCategory == "" ? false : true;
-
-        this.showSearchResult = false;
-
-
-        let _sh = wx.getStorageSync('searchHistory');
-        this.searchHistory = _sh == '' ? [] : _sh; 
     },
     created(){
         
@@ -224,6 +202,14 @@ export default {
     onLoad(options){
     },
     methods:{
+        confirmParam(){
+            const pages = getCurrentPages()
+            const pervPage = pages[pages.length-2]
+            pervPage.setData({
+                productName: this.productName
+            })
+            wx.navigateBack(); 
+        },
         closeSearchPanel(){
             this.showSearchResult = false;
             this.value = "";
@@ -234,16 +220,9 @@ export default {
              if (this.value == "") {
                   this.closeSearchPanel();
              }
-             // get search results
-             if (this.IsFromHelp){
-                let res = await this.R.fetchMissionSuggestion(this.value);
-                
-                this.searchResults = res.data.data.title;
-             } else {
-                let res = await this.R.fetchSearchSuggestion(this.value);
-                this.searchResults = res.data.data.title;
-             }
-            
+             console.log(this.value)
+             const result = this.mockData.filter(item=>item.displayName.includes(this.value))
+             this.searchResults = result
         },
           onCancel(){
             this.closeSearchPanel();
@@ -292,33 +271,17 @@ export default {
             this.currentHistoryTagIndex = index;
             this.currentHistory = tag;
             // to detail page
-            this.goProductionList(tag);
+            //this.goProductionList(tag);
         },
         chooseRecommendTag(tag, index) {
             this.currentRecommendTagIndex = index;
             // to detail page
-            this.goProductionList(tag);
+           // this.goProductionList(tag);
         },
-        goProductionList(data) {
-            this.addHistory(data);
-
-            if (this.IsFromHelp) {
-                let params = {value: data};
-                let params_str = encodeURIComponent(JSON.stringify({keyword: data, currentDistanceIndex: this.currentDistanceIndex}))
-                this.$push(`/pages/production-help-search/main?data=${params_str}`)
-            } else {
-                let params = {
-                    value: data, 
-                    rootCategory: this.rootCategory,
-                    category: this.category,
-                    rootCategoryId: this.rootCategoryId,
-                    categoryId: this.categoryId,
-                    distanceValue: this.distanceValue,
-                    sortModel: this.sortModel
-                };
-                let params_str = encodeURIComponent(JSON.stringify(params));
-                this.$push(`/pages/production-list-search/main?data=${params_str}`)
-            }
+        chooseProduct(data) {
+            this.addHistory(data.displayName);
+            this.showSearchResult = false
+            this.productName = data.displayName
         },
         removeCategory(){
             this.isCategory = false;

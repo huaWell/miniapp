@@ -1,6 +1,10 @@
 {
     "navigationBarTitleText": "搜索",
       "usingComponents": {
-        "van-search": "/static/vant-weapp/search/index"
+        "van-search": "/static/vant-weapp/search/index",
+        "van-cell": "/static/vant-weapp/cell/index",
+        "van-cell-group": "/static/vant-weapp/cell-group/index",
+        "van-field": "/static/vant-weapp/field/index",
+        "van-button": "/static/vant-weapp/button/index"
       }
   }
