@@ -1,5 +1,5 @@
 {
-	"navigationBarTitleText": "外部链接",
+	"navigationBarTitleText": "卖",
 	"usingComponents": {
 	  "van-cell": "/static/vant-weapp/cell/index",
 	  "van-cell-group": "/static/vant-weapp/cell-group/index",
