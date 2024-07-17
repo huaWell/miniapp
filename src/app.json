@@ -34,7 +34,8 @@
     "pages/production-help-search/main",
     "pages/production-list-search/main",
     "pages/circle-h5/main",
-    "pages/my-fresh/main"
+    "pages/my-fresh/main",
+    "pages/webview-progress/main"
   ],
   "window":
   {

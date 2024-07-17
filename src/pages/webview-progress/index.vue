@@ -14,20 +14,23 @@
 let random = () => {
   return parseInt(Math.random() * 10000)
 }
+import qs from 'querystring'
 
 export default {
     name: 'webView',
     components:{},
     data(){
         return {
-            //url: "https://product-lite.bugongsoft.com"
-            url: "https://operation.bugongsoft.com"
+            //url: "https://operation.bugongsoft.com"
+            url: "https://operation.bugongsoft.com/#/orderProgress"
             //url: "https://www.baidu.com"
         }
     },
     mounted(){
         console.log(this.url)
-       // this.url = `https://operation.bugongsoft.com/#/orderProgress/?v=${random()}`
+        // this.url = `https://operation.bugongsoft.com/#?${qs.stringify({
+        //     isShowProgress: true
+        // })}`
     },
     onShow(){
        // this.url = decodeURIComponent(this.$mp.query.url)

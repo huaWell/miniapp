@@ -1,0 +1,9 @@
+{
+	"navigationBarTitleText": "进度查询",
+	"usingComponents": {
+	  "van-cell": "/static/vant-weapp/cell/index",
+	  "van-cell-group": "/static/vant-weapp/cell-group/index",
+	  "van-action-sheet": "/static/vant-weapp/action-sheet/index",
+	  "van-button": "/static/vant-weapp/button/index"
+	}
+}

@@ -1,5 +1,5 @@
 {
-	"navigationBarTitleText": "我的",
+	"navigationBarTitleText": "工作台",
 	"usingComponents": {
 	  "van-cell": "/static/vant-weapp/cell/index",
 	  "van-cell-group": "/static/vant-weapp/cell-group/index"
