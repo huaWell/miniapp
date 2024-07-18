@@ -128,7 +128,7 @@ export default {
         path:'/pages/quality-analysis/main'
       },
       {
-        name:'进度查询',
+        name:'订单态势',
         url:'https://img2.baidu.com/it/u=1421951440,2958002268&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=390',
         path:'/pages/webview-progress/main'
       }

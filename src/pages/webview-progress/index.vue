@@ -28,7 +28,7 @@ export default {
     },
     mounted(){
         console.log(this.url)
-        this.url = `https://operation.bugongsoft.com/#/orderProgress/?v=${random()}`
+        this.url = `https://operation.bugongsoft.com/#/order-stats/?v=${random()}`
     },
     onShow(){
        // this.url = decodeURIComponent(this.$mp.query.url)
