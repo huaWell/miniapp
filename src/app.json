@@ -65,7 +65,7 @@
       },
       {
         "pagePath": "pages/webview/main",
-        "text": "订单态势",
+        "text": "产能态势",
         "iconPath": "/static/publish.png",
         "selectedIconPath": "/static/publish.png"
       },
