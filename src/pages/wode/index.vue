@@ -150,11 +150,11 @@
           <div class="message-num">100</div>
         </van-cell> -->
 
-        <van-cell @click="onGotoMyPublish" custom-class="my-van-cell--large" size="large" title="代办功能2" is-link>
+        <van-cell @click="onGotoMyPublish" custom-class="my-van-cell--large" size="large" title="自定义界面" is-link>
           <div slot="icon" class="icon icon--publish"></div>
         </van-cell>
 
-        <van-cell @click="onGotoMyAskBuy" custom-class="my-van-cell--large" size="large" title="代办功能3" is-link>
+        <van-cell @click="onGotoMyAskBuy" custom-class="my-van-cell--large" size="large" title="反馈" is-link>
           <div slot="icon" class="icon icon--ask-buy"></div>
         </van-cell>
 
@@ -201,7 +201,7 @@ export default {
   },
   mounted() {
 
-    
+
   },
   async onShow () {
   },
@@ -212,12 +212,12 @@ export default {
     },
     onEditInfo () {
       let param = {name: this.name, avatar: this.avatar};
-      
+
       let param_str = encodeURIComponent(JSON.stringify(param));
 
     },
     onGotoMessage () {
- 
+
     },
     onGotoMyPublish () {
 
@@ -232,10 +232,10 @@ export default {
 
     },
      onGotoMyFresh(){
-      
+
     },
     async onGotoObject(){
-      //let {latitude, longitude} = await getLocation()  
+      //let {latitude, longitude} = await getLocation()
     }
   }
 }
