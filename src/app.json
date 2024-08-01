@@ -27,6 +27,7 @@
     "pages/ask/main",
     "pages/hurryup-detail/main",
     "pages/login/main",
+    "pages/order/main",
     "pages/my-center/main",
     "pages/map/main",
     "pages/webview/main",
